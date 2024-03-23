@@ -1,12 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
+import { LoginDTO } from '../../dtos/user/login.dto';
+import { UserService } from '../../services/user.service';
+import { TokenService } from '../../services/token.service';
+import { RoleService } from '../../services/role.service'; // Import RoleService
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import {LoginDTO} from "../dtos/user/login.dto";
-import {UserService} from "../services/user.service";
-import {TokenService} from "../services/token.service";
-import {RoleService} from "../services/role.service";
-import {LoginResponse} from "../responses/user/login.response";
-import {Role} from "../models/role"; // Đường dẫn đến model Role
+import { LoginResponse } from '../../responses/user/login.response';
+import { Role } from '../../models/role'; // Đường dẫn đến model Role
 
 @Component({
   selector: 'app-login',
@@ -67,7 +67,7 @@ export class LoginComponent {
         const { token } = response;
         if (this.rememberMe) {
           this.tokenService.setToken(token);
-        }
+        }                
         //this.router.navigate(['/login']);
       },
       complete: () => {
